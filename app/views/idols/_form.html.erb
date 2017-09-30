@@ -1,0 +1,32 @@
+<%= form_with(model: idol, local: true) do |form| %>
+  <% if idol.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(idol.errors.count, "error") %> prohibited this idol from being saved:</h2>
+
+      <ul>
+      <% idol.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :idol_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :yomigana %>
+    <%= form.text_field :yomigana, id: :idol_yomigana %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, id: :idol_image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
