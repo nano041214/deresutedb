@@ -1,24 +1,60 @@
-# README
+# クラス設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Idol class
 
-Things you may want to cover:
+```
+id: int
+name: string
+yomigana: string
+image: string
+```
 
-* Ruby version
+Dress class
 
-* System dependencies
+```
+id: int
+idol_id: int
+image: string
+```
 
-* Configuration
+Color class
+32 種類ぐらいを想定
+大まかに 8 の色があり、そこから細分化
 
-* Database creation
+```
+id: int
+dress_id: int
+rgb: rgb
+parent_color: string
+```
 
-* Database initialization
+Taste class
 
-* How to run the test suite
+```
+id: int
+dress_id: int
+title: string
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Song class
 
-* Deployment instructions
+```
+id: int
+title: string
+idols: Array<Idol>
+image: string
+```
 
-* ...
+Idol has_many Dress
+Dress has_many color
+Dress has_many Taste
+
+Song has_many Idol
+Song has_many Color
+
+クッキーで管理
+User class
+
+```
+idols: Array<Dress>
+```
